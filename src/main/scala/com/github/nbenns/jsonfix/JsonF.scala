@@ -19,7 +19,7 @@ object JsonF {
   def jsonArray(value: Fix[JsonF]*): Json = Fix(JsonArray(value.toList))
   def jsonObject(value: (String, Json)*) = Fix(JsonObject(value.toList))
 
-  def toStringFAlg: FAlgebra[JsonF, String] = {
+  val toStringFAlg: FAlgebra[JsonF, String] = {
     case JsonNull() => "null"
     case JsonBoolean(v) => v.toString
     case JsonNumber(v) => v.toString
