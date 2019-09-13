@@ -5,7 +5,7 @@ import cats.Functor
 sealed trait JsonF[A] extends Product with Serializable
 
 object JsonF {
-  private case class JsonNull[A]() extends JsonF[A]
+  private final case class JsonNull[A]() extends JsonF[A]
   private final case class JsonBoolean[A](value: Boolean) extends JsonF[A]
   private final case class JsonNumber[A](value: Double) extends JsonF[A]
   private final case class JsonString[A](value: String) extends JsonF[A]
