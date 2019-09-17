@@ -1,5 +1,5 @@
 package com.github.nbenns.jsonfix
-import com.github.nbenns.jsonfix.step6.JsonF.{JsonArray, JsonBoolean, JsonNull, JsonNumber, JsonObject, JsonString}
+import com.github.nbenns.jsonfix.step6.JsonF._
 
 import scala.language.higherKinds
 
