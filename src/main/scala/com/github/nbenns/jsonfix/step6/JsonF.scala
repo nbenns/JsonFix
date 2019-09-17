@@ -1,7 +1,12 @@
-package com.github.nbenns.jsonfix
+package com.github.nbenns.jsonfix.step6
 
 import cats.Functor
+import com.github.nbenns.jsonfix.Encoder
 
+/*
+ We rename our Functor to JsonF, and put a type alias in a package object
+ type Json = Fix[Json]
+ */
 sealed trait JsonF[A] extends Product with Serializable
 
 object JsonF {
@@ -12,11 +17,11 @@ object JsonF {
   private final case class JsonArray[A](value: List[A]) extends JsonF[A]
   private final case class JsonObject[A](value: List[(String, A)]) extends JsonF[A]
 
-  def jsonNull(): Json = Fix(JsonNull())
+  def jsonNull: Json = Fix(JsonNull())
   def jsonBoolean(value: Boolean): Json = Fix(JsonBoolean(value))
   def jsonNumber(value: Double): Json = Fix(JsonNumber(value))
   def jsonString(value: String): Json = Fix(JsonString(value))
-  def jsonArray(value: Fix[JsonF]*): Json = Fix(JsonArray(value.toList))
+  def jsonArray(value: Json*): Json = Fix(JsonArray(value.toList))
   def jsonObject(value: (String, Json)*) = Fix(JsonObject(value.toList))
 
   val toStringFAlg: FAlgebra[JsonF, String] = {
@@ -40,4 +45,6 @@ object JsonF {
       case JsonObject(v) => JsonObject(v.map { case (k, e) => (k, f(e)) })
     }
   }
+
+  implicit val fixJsonEnc: Encoder[Json] = _.cata(JsonF.toStringFAlg)
 }

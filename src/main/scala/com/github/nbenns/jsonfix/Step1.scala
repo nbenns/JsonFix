@@ -1,13 +1,14 @@
 package com.github.nbenns.jsonfix
 
-import JsonF._
+import step1._
+import step1.Json._
 
-object Main extends App {
-  val a: Json = jsonObject (
+object Step1 extends App {
+  val a: Json = jsonObject(
     "boolean" -> jsonBoolean(true),
     "number" -> jsonNumber(2.0),
     "string" -> jsonString("bob"),
-    "nullValue" -> jsonNull(),
+    "nullValue" -> jsonNull,
     "array" -> jsonArray(jsonNumber(1), jsonString("2")),
     "object" -> jsonObject(
       "one" -> jsonNumber(1),
@@ -15,6 +16,6 @@ object Main extends App {
     )
   )
 
-  val out = Encoder[Json].encode(a)
+  val out: String = Encoder[Json].encode(a)
   println(out)
 }
