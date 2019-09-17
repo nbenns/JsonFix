@@ -8,7 +8,7 @@ package object step6 {
 
   type Json = Fix[JsonF]
   object Json {
-    def Null: Json = Fix(JsonNull())
+    val Null: Json = Fix(JsonNull())
     def Boolean(value: Boolean): Json = Fix(JsonBoolean(value))
     def Number(value: Double): Json = Fix(JsonNumber(value))
     def String(value: String): Json = Fix(JsonString(value))
