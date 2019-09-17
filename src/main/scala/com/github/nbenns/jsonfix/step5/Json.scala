@@ -18,7 +18,7 @@ object Json {
   /*
     The smart constructors now return Fix[Json], this will now become our Json type.
    */
-  def Null: Fix[Json] = Fix(JsonNull())
+  val Null: Fix[Json] = Fix(JsonNull())
   def Boolean(value: Boolean): Fix[Json] = Fix(JsonBoolean(value))
   def Number(value: Double): Fix[Json] = Fix(JsonNumber(value))
   def String(value: String): Fix[Json] = Fix(JsonString(value))

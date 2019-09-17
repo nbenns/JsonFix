@@ -12,7 +12,7 @@ object Json {
   private final case class JsonArray(value: List[Json]) extends Json
   private final case class JsonObject(value: List[(String, Json)]) extends Json
 
-  def Null: Json = JsonNull
+  val Null: Json = JsonNull
   def Boolean(value: Boolean): Json = JsonBoolean(value)
   def Number(value: Double): Json = JsonNumber(value)
   def String(value: String): Json = JsonString(value)

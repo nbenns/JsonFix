@@ -16,7 +16,7 @@ object Json {
   private final case class JsonArray[A](value: List[A]) extends Json[A]
   private final case class JsonObject[A](value: List[(String, A)]) extends Json[A]
 
-  def Null: Json[Nothing] = JsonNull
+  val Null: Json[Nothing] = JsonNull
   def Boolean(value: Boolean): Json[Boolean] = JsonBoolean(value)
   def Number(value: Double): Json[Double] = JsonNumber(value)
   def String(value: String): Json[String] = JsonString(value)
