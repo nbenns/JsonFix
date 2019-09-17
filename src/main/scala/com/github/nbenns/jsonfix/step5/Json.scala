@@ -18,12 +18,12 @@ object Json {
   /*
     The smart constructors now return Fix[Json], this will now become our Json type.
    */
-  def jsonNull: Fix[Json] = Fix(JsonNull())
-  def jsonBoolean(value: Boolean): Fix[Json] = Fix(JsonBoolean(value))
-  def jsonNumber(value: Double): Fix[Json] = Fix(JsonNumber(value))
-  def jsonString(value: String): Fix[Json] = Fix(JsonString(value))
-  def jsonArray[A](value: Fix[Json]*): Fix[Json] = Fix(JsonArray(value.toList))
-  def jsonObject[A](value: (String, Fix[Json])*): Fix[Json] = Fix(JsonObject(value.toList))
+  def Null: Fix[Json] = Fix(JsonNull())
+  def Boolean(value: Boolean): Fix[Json] = Fix(JsonBoolean(value))
+  def Number(value: Double): Fix[Json] = Fix(JsonNumber(value))
+  def String(value: String): Fix[Json] = Fix(JsonString(value))
+  def Array[A](value: Fix[Json]*): Fix[Json] = Fix(JsonArray(value.toList))
+  def Object[A](value: (String, Fix[Json])*): Fix[Json] = Fix(JsonObject(value.toList))
 
   /*
     The implementation seems a little weird, let's explain:

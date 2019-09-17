@@ -12,12 +12,12 @@ object Json {
   private final case class JsonArray(value: List[Json]) extends Json
   private final case class JsonObject(value: List[(String, Json)]) extends Json
 
-  def jsonNull: Json = JsonNull
-  def jsonBoolean(value: Boolean): Json = JsonBoolean(value)
-  def jsonNumber(value: Double): Json = JsonNumber(value)
-  def jsonString(value: String): Json = JsonString(value)
-  def jsonArray(value: Json*): Json = JsonArray(value.toList)
-  def jsonObject(value: (String, Json)*): Json = JsonObject(value.toList)
+  def Null: Json = JsonNull
+  def Boolean(value: Boolean): Json = JsonBoolean(value)
+  def Number(value: Double): Json = JsonNumber(value)
+  def String(value: String): Json = JsonString(value)
+  def Array(value: Json*): Json = JsonArray(value.toList)
+  def Object(value: (String, Json)*): Json = JsonObject(value.toList)
 
   /*
     Here he are doing recursion on Array and on Object.

@@ -17,12 +17,12 @@ object Json {
   private final case class JsonArray[A](value: List[A]) extends Json[A]
   private final case class JsonObject[A](value: List[(String, A)]) extends Json[A]
 
-  def jsonNull[A]: Json[A] = JsonNull()
-  def jsonBoolean[A](value: Boolean): Json[A] = JsonBoolean(value)
-  def jsonNumber[A](value: Double): Json[A] = JsonNumber(value)
-  def jsonString[A](value: String): Json[A] = JsonString(value)
-  def jsonArray[A](value: Json[A]*): Json[Json[A]] = JsonArray(value.toList)
-  def jsonObject[A](value: (String, Json[A])*): Json[Json[A]] = JsonObject(value.toList)
+  def Null[A]: Json[A] = JsonNull()
+  def Boolean[A](value: Boolean): Json[A] = JsonBoolean(value)
+  def Number[A](value: Double): Json[A] = JsonNumber(value)
+  def String[A](value: String): Json[A] = JsonString(value)
+  def Array[A](value: Json[A]*): Json[Json[A]] = JsonArray(value.toList)
+  def Object[A](value: (String, Json[A])*): Json[Json[A]] = JsonObject(value.toList)
 
   /*
     Still having trouble... A keeps changing on us!

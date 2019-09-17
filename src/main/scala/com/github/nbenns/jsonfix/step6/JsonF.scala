@@ -10,21 +10,14 @@ import com.github.nbenns.jsonfix.Encoder
 sealed trait JsonF[A] extends Product with Serializable
 
 object JsonF {
-  private final case class JsonNull[A]() extends JsonF[A]
-  private final case class JsonBoolean[A](value: Boolean) extends JsonF[A]
-  private final case class JsonNumber[A](value: Double) extends JsonF[A]
-  private final case class JsonString[A](value: String) extends JsonF[A]
-  private final case class JsonArray[A](value: List[A]) extends JsonF[A]
-  private final case class JsonObject[A](value: List[(String, A)]) extends JsonF[A]
+  private[step6] final case class JsonNull[A]() extends JsonF[A]
+  private[step6] final case class JsonBoolean[A](value: Boolean) extends JsonF[A]
+  private[step6] final case class JsonNumber[A](value: Double) extends JsonF[A]
+  private[step6] final case class JsonString[A](value: String) extends JsonF[A]
+  private[step6] final case class JsonArray[A](value: List[A]) extends JsonF[A]
+  private[step6] final case class JsonObject[A](value: List[(String, A)]) extends JsonF[A]
 
-  def jsonNull: Json = Fix(JsonNull())
-  def jsonBoolean(value: Boolean): Json = Fix(JsonBoolean(value))
-  def jsonNumber(value: Double): Json = Fix(JsonNumber(value))
-  def jsonString(value: String): Json = Fix(JsonString(value))
-  def jsonArray(value: Json*): Json = Fix(JsonArray(value.toList))
-  def jsonObject(value: (String, Json)*) = Fix(JsonObject(value.toList))
-
-  val toStringFAlg: FAlgebra[JsonF, String] = {
+  private val toStringFAlg: FAlgebra[JsonF, String] = {
     case JsonNull() => "null"
     case JsonBoolean(v) => v.toString
     case JsonNumber(v) => v.toString

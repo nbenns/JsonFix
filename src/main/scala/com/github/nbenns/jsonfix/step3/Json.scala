@@ -16,12 +16,12 @@ object Json {
   private final case class JsonArray[A](value: List[A]) extends Json[A]
   private final case class JsonObject[A](value: List[(String, A)]) extends Json[A]
 
-  def jsonNull: Json[Nothing] = JsonNull
-  def jsonBoolean(value: Boolean): Json[Boolean] = JsonBoolean(value)
-  def jsonNumber(value: Double): Json[Double] = JsonNumber(value)
-  def jsonString(value: String): Json[String] = JsonString(value)
-  def jsonArray[A](value: Json[A]*): Json[Json[A]] = JsonArray(value.toList)
-  def jsonObject[A](value: (String, Json[A])*): Json[Json[A]] = JsonObject(value.toList)
+  def Null: Json[Nothing] = JsonNull
+  def Boolean(value: Boolean): Json[Boolean] = JsonBoolean(value)
+  def Number(value: Double): Json[Double] = JsonNumber(value)
+  def String(value: String): Json[String] = JsonString(value)
+  def Array[A](value: Json[A]*): Json[Json[A]] = JsonArray(value.toList)
+  def Object[A](value: (String, Json[A])*): Json[Json[A]] = JsonObject(value.toList)
 
   /*
     What do we even do here?
